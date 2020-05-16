@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1588627359 source:c:\users\federico\documents\unicen\algoritmos i\2020\tpe\concesionaria\main.cpp
+	<iostream>
+	<fstream>
+
