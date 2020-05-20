@@ -8,9 +8,12 @@ class lista
         lista();//constructor vacio
         ~lista();//destructor
         void agregar_elemento(const T & nuevo_elemento, const & lista);
+        void agregar_principio(const T & elemento);
         int cantidad_elementos()const;
+        bool existe_elemento()const;
         bool eliminar_elemento();
-        bool Listavacia();
+        bool eliminar_lista();
+        bool listavacia();
         const T & recuperar_elemento();
     private:
         struct Nodo{
