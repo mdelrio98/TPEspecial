@@ -5,20 +5,20 @@ template <typename T>
 class lista
 {
     public:
-        lista();//constructor vacio
+        lista();//constructor
         ~lista();//destructor
-        void agregar_elemento(const T & nuevo_elemento, const & lista);
-        void agregar_principio(const T & elemento);
-        int cantidad_elementos()const;
-        bool existe_elemento()const;
-        bool eliminar_elemento();
-        bool eliminar_lista();
-        bool listavacia();
-        const T & recuperar_elemento();
+        void agregar_elemento(int posicion,const T & nuevo_elemento);//MOD
+        void agregar_principio(const T & elemento);//MOD
+        int cantidad_elementos();//OBS
+        bool existe_elemento()const;//OBS
+        bool eliminar_elemento();//MOD
+        bool eliminar_lista();//MOD
+        bool listavacia();//OBS
+        const T & recuperar_elemento();//OBS
     private:
         struct Nodo{
             T elemento;
-            Nodo * siguente;
+            Nodo * sig;
         };
         Nodo * primero;
         Nodo * cursor;

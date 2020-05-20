@@ -3,3 +3,45 @@
 	<iostream>
 	<fstream>
 
+1590013639 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\auto.cpp
+	"auto.h"
+	<cstddef>
+
+1590013695 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\auto.h
+	"Lista.h"
+	<string>
+
+1590017534 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\lista.h
+
+1590016188 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\main.cpp
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<iostream>
+	<cstddef>
+
+1590012777 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\concesionaria.cpp
+	"Concesionaria.h"
+	<cstddef>
+
+1590016662 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\concesionaria.h
+	"arbol.h"
+	"lista.h"
+	"auto.h"
+
+1590016764 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\arbol.h
+	"lista.h"
+
+1590016779 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\arbol.cpp
+	"arbol.h"
+	"auto.h"
+	"lista.h"
+	<cstddef>
+
+1590017566 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\lista.cpp
+	"lista.h"
+	<string>
+	"Concesionaria.h"
+	"Auto.h"
+	<cstddef>
+

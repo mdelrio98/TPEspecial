@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
-
+#include <stdlib.h>
+#include <iostream>
+#include <cstddef>
+//#include "Concesionaria.h"
 using namespace std;
 
 /**
@@ -11,14 +14,23 @@ void procesar_archivo_entrada(string origen);//, Contenedor & contenedor);
 
 int main()
 {
+    /* Concesionaria c;creo una concesionaria
+        paso al procesar un arbol para autos
+        agrego cada auto al arbol
+    */
     procesar_archivo_entrada("autos.csv");
+    /*
+        hago servicios
+        destruye estructuras
+        termina
+    */
     return 0;
 }
 
 //Comentarios: atoi y atof requieren un char * para converter a número, usamos c_str de la clase string.
 void procesar_archivo_entrada(string origen)
 {
-    ifstream archivo(origen);
+    ifstream archivo(origen.c_str());
     if (!archivo.is_open())
         cout << "No se pudo abrir el archivo: " << origen << endl;
     else {

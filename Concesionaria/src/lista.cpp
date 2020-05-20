@@ -1,12 +1,17 @@
 #include "lista.h"
+#include<string>
+#include "Concesionaria.h"
+#include "Auto.h"
+#include <cstddef>
+using namespace std;
 
 template <typename T>
-lista<T> lista<T>::lista(){
+lista<T>::lista(){
     primero=NULL;
     //ctor
 }
 template <typename T>
-lista<T>lista::~lista(){
+lista<T>::~lista(){
     //Tenemos que eliminar todos los punteros al heap con un while
     //dtor
 }
@@ -15,7 +20,7 @@ template <typename T>
 void lista<T>::agregar_principio(const T & elemento){
     Nodo * nuevo = new Nodo();
     nuevo->elemento=elemento;
-    nuevo->siguiente=primero;
+    nuevo->sig=primero;
     primero= nuevo;
 }
 
@@ -23,21 +28,20 @@ template <typename T>
 void lista<T>::agregar_elemento(int posicion,const T & nuevo_elemento){
     //la lista esta vacia
     if(posicion == 1)
-        agregar_principio(nuevo_elemento)
+        agregar_principio(nuevo_elemento);
     //la lista tiene elementos
     else{
-        if(primero != null){
+        if(primero != NULL){
             if(cantidad_elementos()+1 >= posicion){
                 int contador=2;//empieza en 2 porque me hace ir un nodo atrasado y puedo insertar bien
-                nodo * aux = primero;
+                Nodo * aux = primero;
                 while((aux->sig!=NULL)and(contador<posicion)){
                     aux=aux->sig;
                     contador++;
                 }
-                nodo*aux2=new nodo;
-                aux2->variable=variable;
-                aux2->sig=aux->sig;
-                aux->sig=aux2;
+                cursor->elemento=nuevo_elemento;
+                cursor->sig=aux->sig;
+                aux->sig=cursor;
             }
         }
     }
@@ -53,11 +57,11 @@ bool lista<T>::listavacia(){
 
 template <typename T>
 int lista<T>::cantidad_elementos(){
-    if(primero!=null){
-        nodo*aux = null;
+    if(primero!=NULL){
+        Nodo*aux = NULL;
         aux=primero;
         int contador=0;
-        while(aux!=null){
+        while(aux!=NULL){
             contador++;
             aux=aux->sig;
         }
@@ -67,6 +71,6 @@ int lista<T>::cantidad_elementos(){
         return 0;
 }
 
-template class lista<std::string>;
+template class lista<string>;
 template class lista<Concesionaria>;
 template class lista<Auto>;
