@@ -43,8 +43,29 @@ void lista<T>::agregar_elemento(int posicion,const T & nuevo_elemento){
     }
 }
 
+template <typename T>
+bool lista<T>::listavacia(){
+    if (primero == NULL)
+        return true;
+    else
+        return false;
+}
 
-
+template <typename T>
+int lista<T>::cantidad_elementos(){
+    if(primero!=null){
+        nodo*aux = null;
+        aux=primero;
+        int contador=0;
+        while(aux!=null){
+            contador++;
+            aux=aux->sig;
+        }
+        return contador;
+    }
+    else
+        return 0;
+}
 
 template class lista<std::string>;
 template class lista<Concesionaria>;
