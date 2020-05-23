@@ -55,7 +55,6 @@ bool lista<T>::listavacia(){
     else
         return false;
 }
-
 template <typename T>
 int lista<T>::cantidad_elementos(){
     if(primero!=NULL){
