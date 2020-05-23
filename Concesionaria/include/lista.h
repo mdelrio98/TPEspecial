@@ -11,8 +11,10 @@ class lista
         void agregar_principio(const T & elemento);//MOD
         int cantidad_elementos();//OBS
         bool existe_elemento()const;//OBS
-        bool eliminar_elemento();//MOD
-        bool eliminar_lista();//MOD
+        void eliminar_Primero();//MOD
+        void eliminar_Arbitrario(T elemento);//MOD
+        void eliminar_elemento( T  elemento);//MOD
+        void eliminar_lista();//MOD
         bool listavacia();//OBS
         const T & recuperar_elemento();//OBS
     private:

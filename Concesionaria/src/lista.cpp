@@ -72,6 +72,48 @@ int lista<T>::cantidad_elementos(){
         return 0;
 }
 
+template <typename T>
+void lista<T>::eliminar_Primero(){
+    Nodo * Aeliminar = primero;
+    primero = primero->sig;
+    delete Aeliminar;
+}
+
+template <typename T>
+void lista<T>::eliminar_Arbitrario(T elemento){
+    if (primero->sig != NULL){
+        Nodo * cursor = primero;
+        while ((cursor->sig != NULL) && (cursor->sig->elemento != elemento))
+            cursor = cursor->sig;
+        if ((cursor != NULL) and (cursor->sig != NULL)){
+            Nodo * AEliminar = cursor->sig;
+            cursor->sig=cursor->sig->sig;
+            AEliminar->sig = NULL;
+            delete AEliminar;
+        }
+    }
+}
+template <typename T>
+void lista<T>::eliminar_elemento( T  elemento){
+    if (primero != NULL){
+        if (primero->elemento == elemento)
+            eliminar_Primero();
+        else
+            eliminar_Arbitrario(elemento);
+    }
+}
+
+template <typename T>
+void lista<T>::eliminar_lista(){
+    if (primero != NULL){
+        Nodo * cursor = primero;
+        while (primero != NULL){
+            cursor = primero;
+            primero = primero->sig;
+            delete cursor;
+        }
+    }
+}
+
 template class lista<string>;
-template class lista<Concesionaria>;
-template class lista<Auto>;
+//template class lista<Auto>;
