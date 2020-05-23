@@ -11,7 +11,7 @@ class arbol
         void agregar_Nodo(const T & elemento);
         bool arbolVacio();
         void agregar(const T & elemento);
-        bool existe_elemento(const T &  elemento,int & iteraciones);
+        bool existe_elemento(const T &  elemento);
         int cantidad_Elementos();
         void listarElementos(lista<T> & listaElementos);
     private:
@@ -20,7 +20,7 @@ class arbol
             arbol*izq;
             arbol*der;
             };
-        Nodo*auxArbol;
+        Nodo*Arbol;
 };
 
 #endif // ARBOL_H

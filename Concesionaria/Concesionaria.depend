@@ -24,15 +24,15 @@
 	"Concesionaria.h"
 	<cstddef>
 
-1590016662 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\concesionaria.h
+1590210751 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\concesionaria.h
 	"arbol.h"
 	"lista.h"
 	"auto.h"
 
-1590016764 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\arbol.h
+1590213329 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\arbol.h
 	"lista.h"
 
-1590016779 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\arbol.cpp
+1590210242 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\arbol.cpp
 	"arbol.h"
 	"auto.h"
 	"lista.h"

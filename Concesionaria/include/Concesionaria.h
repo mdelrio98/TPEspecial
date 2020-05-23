@@ -15,7 +15,7 @@ class Concesionaria
         // en la implementacion utilizamos un void pero en la especificacion de nereus devolvemos una lista
         Auto mayorPrecio();//OBS
     private:
-        arbol<Auto> arbolAutos;
+
 };
 
 #endif // CONCESIONARIA_H
