@@ -39,9 +39,10 @@ void lista<T>::agregar_elemento(int posicion,const T & nuevo_elemento){
                     aux=aux->sig;
                     contador++;
                 }
-                cursor->elemento=nuevo_elemento;
-                cursor->sig=aux->sig;
-                aux->sig=cursor;
+                Nodo*aux2=new Nodo();
+                aux2->elemento=nuevo_elemento;
+                aux2->sig=aux->sig;
+                aux->sig=aux2;
             }
         }
     }

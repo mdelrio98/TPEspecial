@@ -3,15 +3,15 @@
 	<iostream>
 	<fstream>
 
-1590013639 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\auto.cpp
+1590197542 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\auto.cpp
 	"auto.h"
 	<cstddef>
 
-1590013695 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\auto.h
+1590197277 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\auto.h
 	"Lista.h"
 	<string>
 
-1590017534 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\lista.h
+1590196961 d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\include\lista.h
 
 1590016188 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\main.cpp
 	<iostream>
@@ -20,7 +20,7 @@
 	<iostream>
 	<cstddef>
 
-1590012777 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\concesionaria.cpp
+1590019103 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\concesionaria.cpp
 	"Concesionaria.h"
 	<cstddef>
 
@@ -38,7 +38,7 @@
 	"lista.h"
 	<cstddef>
 
-1590017566 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\lista.cpp
+1590197243 source:d:\matias\facultad\ayda\tp especial\tpe-proyecto\concesionaria\src\lista.cpp
 	"lista.h"
 	<string>
 	"Concesionaria.h"

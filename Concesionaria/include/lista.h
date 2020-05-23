@@ -21,7 +21,6 @@ class lista
             Nodo * sig;
         };
         Nodo * primero;
-        Nodo * cursor;
 };
 
 #endif // LISTA_H

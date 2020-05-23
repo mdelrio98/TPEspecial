@@ -8,6 +8,7 @@ class Auto
 {
     public:
         Auto();
+        Auto(int modelo,string patente, string marca, float precio,lista<string>caracteristicas);
         virtual ~Auto();
         int getmodelo(); //OBS
         string getmarca();// OBS

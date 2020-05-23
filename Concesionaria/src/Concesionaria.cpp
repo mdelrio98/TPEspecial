@@ -2,13 +2,11 @@
 #include <cstddef>
 using namespace std;
 
-Concesionaria::Concesionaria()
-{
+Concesionaria::Concesionaria(){
     //ctor
 }
 
-Concesionaria::~Concesionaria()
-{
+Concesionaria::~Concesionaria(){
     //dtor
 }
 /*
