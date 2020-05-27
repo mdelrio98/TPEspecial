@@ -18,6 +18,8 @@ class Auto
         bool operator < (const Auto & A) const;
         bool operator > (const Auto & A) const;
         bool operator == (const Auto & A) const;
+        bool operator != (const Auto & A) const;
+        void imprimirauto();
 
     private:
         int modelo;

@@ -14,7 +14,8 @@ class arbol
         bool existe_elemento(const T &elemento);
         int cantidad_Elementos();
         //void listarElementos(lista<T> & listaElementos);
-        T getElemento(int posicion);
+        T * getElemento(const T &elemento);
+        void imprimirarbol();
     private:
         struct Nodo{
             T raiz;

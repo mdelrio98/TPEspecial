@@ -1,6 +1,7 @@
 #include "arbol.h"
 #include "auto.h"
 #include "lista.h"
+#include <iostream>
 #include <cstddef>
 using namespace std;
 
@@ -13,6 +14,15 @@ arbol<T>::arbol(){
 template <typename T>
 arbol<T>::~arbol(){
     //dtor
+}
+
+template <typename T>
+void arbol<T>::imprimirarbol(){
+    if(Arbol!=NULL){
+        Arbol->izq->imprimirarbol();
+        Arbol->raiz.imprimirauto();
+        Arbol->der->imprimirarbol();
+    }
 }
 
 template <typename T>
@@ -31,6 +41,8 @@ void arbol<T>::agregar_Nodo(const T & elemento){
     Arbol->izq = new arbol();
     Arbol->der = new arbol();
 }
+
+
 
 template<typename T>
 void arbol<T>::agregar(const T &elemento){
@@ -72,21 +84,23 @@ int arbol<T>::cantidad_Elementos(){
             return 0;
 }
 
-/*
+
 template<typename T>
-T arbol<T>::getElemento(int posicion){
-    if(Arbol == NULL){
+T * arbol<T>::getElemento(const T &elemento){
+    if(Arbol == NULL)
         return NULL;
-    }else
-        if( Arbol->raiz == posicion)
-            return Arbol->raiz;
+    else
+    {
+        if( Arbol->raiz == elemento)
+            return &(Arbol->raiz);
         else{
-            if( Arbol->raiz > posicion){
-                return Arbol->izq->getElemento(posicion);
+            if( Arbol->raiz > elemento){
+                return Arbol->izq->getElemento(elemento);
             }else
-                return Arbol->der->getElemento(posicion);
+                return Arbol->der->getElemento(elemento);
         }
+    }
 }
-*/
+
 
 template class arbol<Auto>;
