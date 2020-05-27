@@ -15,6 +15,9 @@ class Auto
         string getpatente();// OBS
         float getprecio();// OBS
         lista<string> getCaracteristicas();//OBS
+        bool operator < (const Auto & A) const;
+        bool operator > (const Auto & A) const;
+        bool operator == (const Auto & A) const;
 
     private:
         int modelo;

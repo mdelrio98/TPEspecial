@@ -19,4 +19,17 @@ bool Consecionaria::buscarPorPatente(string patente){
         }
     }
 }
-*/
+*//*
+bool Concesionaria::existePatente(string patente,arbol<Auto> &arbol_autos){
+    if(!arbol_autos.arbolVacio()){
+        int longlista= arbol_autos.cantidad_Elementos();
+
+        for(int i=0; i < longlista ; i++){
+            if(arbol_autos.getElemento(i) == patente){
+                return true;
+            }
+            else
+                return false;
+        }
+    }
+}*/

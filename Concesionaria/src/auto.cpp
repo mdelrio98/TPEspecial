@@ -38,3 +38,21 @@ float Auto::getprecio(){
 lista<string> Auto::getCaracteristicas(){
     return this->caracteristicas;
 }
+
+bool Auto::operator < (const Auto & A) const {
+    if (this->patente < A.patente)
+        return true; //si es menor
+    return false;
+}
+
+bool Auto::operator > (const Auto & A) const {
+    if (this->patente > A.patente)
+        return true; //si es mayor
+    return false;
+}
+
+bool Auto::operator == (const Auto & A) const {
+    if (this->patente == A.patente)
+        return true; //si son iguales
+    return false;
+}

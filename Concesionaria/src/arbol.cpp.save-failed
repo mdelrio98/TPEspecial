@@ -26,14 +26,14 @@ bool arbol<T>::arbolVacio(){
 
 template <typename T>
 void arbol<T>::agregar_Nodo(const T & elemento){
-    Arbol=new Nodo();
+    //Arbol=new Nodo();
     Arbol->raiz=elemento;
     Arbol->izq = new arbol();
     Arbol->der = new arbol();
 }
 
 template<typename T>
-void arbol<T>::agregar(const T &elemento){
+void arbol<T>::agregar( T elemento){
         if(Arbol == NULL){
             agregar_Nodo(elemento);
         }
@@ -88,5 +88,4 @@ T arbol<T>::getElemento(int posicion){
         }
 }
 */
-
 template class arbol<Auto>;

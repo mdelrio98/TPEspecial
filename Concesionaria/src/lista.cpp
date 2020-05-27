@@ -116,4 +116,4 @@ void lista<T>::eliminar_lista(){
 }
 
 template class lista<string>;
-//template class lista<Auto>;
+template class lista<Auto*>;

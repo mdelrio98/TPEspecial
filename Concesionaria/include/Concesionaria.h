@@ -10,7 +10,7 @@ class Concesionaria
     public:
         Concesionaria();//CB
         virtual ~Concesionaria();
-        bool existePatente();//OBS
+        bool existePatente(string patente,arbol<Auto> &arbol_autos);//OBS
         void listarModelo(int modelo, lista<Auto>listaPorModelo);//OBS
         // en la implementacion utilizamos un void pero en la especificacion de nereus devolvemos una lista
         Auto mayorPrecio();//OBS
