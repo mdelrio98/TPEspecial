@@ -13,6 +13,7 @@ class Auto
         int getmodelo(); //OBS
         string getmarca();// OBS
         string getpatente();// OBS
+        void setpatente(string pat);//MOD
         float getprecio();// OBS
         lista<string> getCaracteristicas();//OBS
         bool operator < (const Auto & A) const;

@@ -24,8 +24,12 @@ void  Concesionaria::nuevoAuto(Auto a){
 bool Concesionaria::existePatente(string patente){
     if(arbol_Autos.arbolVacio()!= true){
         Auto a1;
-        if(arbol_Autos.getElemento(a1)->getpatente() == patente)
+        a1.setpatente(patente);
+        //cout<<"patente:"<<a1.getpatente()<<endl;
+        if(arbol_Autos.existe_elemento(a1) == true){
+           // cout<<"si";
             return true;
+        }
     }
     return false;
 }

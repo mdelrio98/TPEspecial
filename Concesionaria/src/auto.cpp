@@ -36,6 +36,10 @@ string Auto::getpatente(){
     return this->patente;
 }
 
+void Auto::setpatente(string pat){
+    this->patente=pat;
+}
+
 float Auto::getprecio(){
     return this->precio;
 }
