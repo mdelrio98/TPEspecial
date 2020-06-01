@@ -12,13 +12,14 @@ class Concesionaria
         virtual ~Concesionaria();
         void  nuevoAuto(Auto a);
         bool existePatente(string patente);//OBS
-        void listarModelo(int modelo, lista<Auto*>listaPorModelo);//OBS
+        void listarModelo(int modelo, lista<Auto*>&listaPorModelo);//OBS
         // en la implementacion utilizamos un void pero en la especificacion de nereus devolvemos una lista
-        Auto mayorPrecio(arbol<Auto> &arbol_autos);//OBS
+        Auto mayorPrecio(arbol &arbol_autos);//OBS
         void procesar_archivo_entrada(string origen);//, Contenedor & contenedor);
         void imprimirarbolautos();
+        void imprimirlista(lista<Auto*>listaPorModelo);
     private:
-        arbol<Auto>arbol_Autos;
+        arbol arbol_Autos;
 };
 
 #endif // CONCESIONARIA_H

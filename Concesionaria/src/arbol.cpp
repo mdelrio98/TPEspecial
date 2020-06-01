@@ -5,19 +5,17 @@
 #include <cstddef>
 using namespace std;
 
-template <typename T>
-arbol<T>::arbol(){
+arbol::arbol(){
     Arbol = NULL;
     //ctor
 }
 
-template <typename T>
-arbol<T>::~arbol(){
+arbol::~arbol(){
     //dtor
 }
 
-template <typename T>
-void arbol<T>::imprimirarbol(){
+
+void arbol::imprimirarbol(){
     if(Arbol!=NULL){
         Arbol->izq->imprimirarbol();
         Arbol->raiz.imprimirauto();
@@ -25,8 +23,8 @@ void arbol<T>::imprimirarbol(){
     }
 }
 
-template <typename T>
-bool arbol<T>::arbolVacio(){
+
+bool arbol::arbolVacio(){
     if(Arbol == NULL){
         return true;
     }
@@ -34,8 +32,8 @@ bool arbol<T>::arbolVacio(){
         return false;
 }
 
-template <typename T>
-void arbol<T>::agregar_Nodo(const T & elemento){
+
+void arbol::agregar_Nodo(const Auto & elemento){
     Arbol=new Nodo();
     Arbol->raiz=elemento;
     Arbol->izq = new arbol();
@@ -43,9 +41,7 @@ void arbol<T>::agregar_Nodo(const T & elemento){
 }
 
 
-
-template<typename T>
-void arbol<T>::agregar(const T &elemento){
+void arbol::agregar(const Auto &elemento){
         if(Arbol == NULL){
             agregar_Nodo(elemento);
         }
@@ -61,8 +57,8 @@ void arbol<T>::agregar(const T &elemento){
         }
 }
 
-template<typename T>
-bool arbol<T>::existe_elemento(const T &elemento){
+
+bool arbol::existe_elemento(const Auto &elemento){
     if(Arbol == NULL){
         return false;
     }else
@@ -76,8 +72,8 @@ bool arbol<T>::existe_elemento(const T &elemento){
         }
 }
 
-template<typename T>
-int arbol<T>::cantidad_Elementos(){
+
+int arbol::cantidad_Elementos(){
     if (Arbol!=NULL){
             return 1+ Arbol->der->cantidad_Elementos() + Arbol->izq->cantidad_Elementos();
        }else
@@ -85,7 +81,16 @@ int arbol<T>::cantidad_Elementos(){
 }
 
 
-template<typename T>
+void arbol::listarElementos(int & iteraciones,lista<Auto*> & listaElementos){
+
+    if(Arbol != NULL){
+        Auto * a= &(Arbol->raiz);
+        listaElementos.agregar_elemento(iteraciones,a);
+        Arbol->izq->listarElementos(iteraciones,listaElementos);
+        Arbol->der->listarElementos(iteraciones,listaElementos);
+    }
+}
+/*template<typename T>
 T * arbol<T>::getElemento(const T &elemento){
     if(Arbol == NULL)
         return NULL;
@@ -101,6 +106,5 @@ T * arbol<T>::getElemento(const T &elemento){
         }
     }
 }
+*/
 
-
-template class arbol<Auto>;

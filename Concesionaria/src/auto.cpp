@@ -23,9 +23,16 @@ Auto::~Auto(){
 void Auto::imprimirauto(){
     cout<<this->patente<<endl;
 }
+void Auto::imprimirauto2(){
+    cout<<this->modelo<<endl;
+}
 
 int Auto::getmodelo(){
     return this->modelo;
+}
+
+void Auto::setmodelo(int mod){
+    this->modelo=mod;
 }
 
 string Auto::getmarca(){
@@ -49,27 +56,27 @@ lista<string> Auto::getCaracteristicas(){
 }
 
 bool Auto::operator < (const Auto & A) const {
-    if (this->patente < A.patente){
+    if ((this->patente < A.patente) || (this->modelo < A.modelo)){
         return true; //si es menor
     }
     return false;
 }
 
 bool Auto::operator > (const Auto & A) const {
-    if (this->patente > A.patente){
+    if ((this->patente > A.patente) || (this->modelo > A.modelo)){
         return true; //si es mayor
     }
     return false;
 }
 
 bool Auto::operator == (const Auto & A) const {
-    if (this->patente == A.patente){
+    if ((this->patente == A.patente) || (this->modelo == A.modelo)){
         return true; //si son iguales
     }
     return false;
 }
 bool Auto::operator != (const Auto & A) const {
-    if (this->patente != A.patente){
+    if ((this->patente != A.patente) || (this->modelo != A.modelo)){
         return true; //si son iguales
     }
     return false;

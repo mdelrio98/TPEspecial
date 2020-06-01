@@ -16,7 +16,7 @@ class lista
         void eliminar_elemento( T  elemento);//MOD
         void eliminar_lista();//MOD
         bool listavacia();//OBS
-        const T & recuperar_elemento();//OBS
+        const T recuperar_elemento(int iteraciones);//OBS
     private:
         struct Nodo{
             T elemento;

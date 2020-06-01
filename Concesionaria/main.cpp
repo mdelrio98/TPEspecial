@@ -16,10 +16,10 @@ int main()
 {
 
     Concesionaria c;
-    c.procesar_archivo_entrada("prueba.csv");
+    c.procesar_archivo_entrada("autos.csv");
     //existe patente
-    c.imprimirarbolautos();
-    cout<<"Hola"<<endl;
+ //   c.imprimirarbolautos();
+ //   cout<<"Hola"<<endl;
     string s= "QVP111";
     if(c.existePatente(s)== true){
         cout<<"Se encuentra la patente"<<endl;

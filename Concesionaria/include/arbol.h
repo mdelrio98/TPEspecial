@@ -1,24 +1,25 @@
 #ifndef ARBOL_H
 #define ARBOL_H
 #include "lista.h"
+#include "Auto.h"
 
-template <typename T>
+
 class arbol
 {
     public:
         arbol();
         virtual ~arbol();
-        void agregar_Nodo(const T & elemento);
+        void agregar_Nodo(const Auto & elemento);
         bool arbolVacio();
-        void agregar(const T &  elemento);
-        bool existe_elemento(const T &elemento);
+        void agregar(const Auto &  elemento);
+        bool existe_elemento(const Auto &elemento);
         int cantidad_Elementos();
-        //void listarElementos(lista<T> & listaElementos);
-        T * getElemento(const T &elemento);
+        void listarElementos(int &iteraciones,lista<Auto*> & listaElementos);
+        //T * getElemento(const T &elemento);
         void imprimirarbol();
     private:
         struct Nodo{
-            T raiz;
+            Auto raiz;
             arbol*izq;
             arbol*der;
             };

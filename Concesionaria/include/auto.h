@@ -11,6 +11,7 @@ class Auto
         Auto(int modelo,string patente, string marca, float precio,lista<string>caracteristicas);
         virtual ~Auto();
         int getmodelo(); //OBS
+        void setmodelo(int mod);//MOD
         string getmarca();// OBS
         string getpatente();// OBS
         void setpatente(string pat);//MOD
@@ -21,6 +22,7 @@ class Auto
         bool operator == (const Auto & A) const;
         bool operator != (const Auto & A) const;
         void imprimirauto();
+        void imprimirauto2();
 
     private:
         int modelo;

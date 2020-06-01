@@ -49,6 +49,20 @@ void lista<T>::agregar_elemento(int posicion,const T & nuevo_elemento){
 }
 
 template <typename T>
+const T lista<T>::recuperar_elemento(int iteraciones){
+    if(primero!= NULL){
+        int contador=1;//empieza en 2 porque me hace ir un nodo atrasado y puedo insertar bien
+                Nodo * aux = primero;
+                while((aux!=NULL)and(contador<iteraciones)){
+                    aux=aux->sig;
+                    contador++;
+                }
+                if(contador == iteraciones)
+                    return aux->elemento;
+    }
+}
+
+template <typename T>
 bool lista<T>::listavacia(){
     if (primero == NULL)
         return true;

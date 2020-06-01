@@ -16,9 +16,46 @@ Concesionaria::~Concesionaria(){
 void  Concesionaria::imprimirarbolautos(){
     arbol_Autos.imprimirarbol();
 }
+/*
+void Concesionaria::imprimirlista(lista<Auto*>listaPorModelo){
+
+    if(listaPorModelo!= NULL){
+        cout<<"Tiene: "<<endl;
+        int longlista= listaPorModelo.cantidad_elementos();
+        for (int i=1;i < longlista;i++){
+            cout<<"Patente"<< listaPorModelo.recuperar_elemento(i)->getpatente()<<endl;
+            cout<<"Modelo"<< listaPorModelo.recuperar_elemento(i)->getmodelo()<<endl;
+            cout<<"Marca"<< listaPorModelo.recuperar_elemento(i)->getmarca()<<endl;
+            cout<<"Precio"<< listaPorModelo.recuperar_elemento(i)->getprecio()<<endl;
+            lista<string> cara = listaPorModelo.recuperar_elemento(i)->getCaracteristicas();
+            int j=0;
+            while (cara != NULL){
+                cout<<cara.recuperar_elemento(j)<<endl;
+                cara= cara->sig;
+                j++;
+            }
+        }
+    }
+}*/
 
 void  Concesionaria::nuevoAuto(Auto a){
     arbol_Autos.agregar(a);
+}
+
+void Concesionaria::listarModelo(int modelo, lista<Auto*>&listaPorModelo){
+    if(arbol_Autos.arbolVacio()!= true){
+        int longlista= arbol_Autos.cantidad_Elementos();
+        lista<Auto*>listaaux;
+        for(int i = 1; i < longlista;i++){
+            arbol_Autos.listarElementos(i,listaaux);
+             Auto * a=listaaux.recuperar_elemento(i);
+             //cout<<"crea";
+            if( a->getmodelo()== modelo){
+                listaPorModelo.agregar_elemento(i,a);
+               // cout<<"auto:"<<a->getpatente()<<endl;
+            }
+        }
+    }
 }
 
 bool Concesionaria::existePatente(string patente){
