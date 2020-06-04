@@ -1,28 +1,28 @@
 #ifndef AUTO_H
 #define AUTO_H
-#include "Lista.h"
-#include <string>
+#include<iostream>
+#include"lista.h"
 using namespace std;
-
 class Auto
 {
     public:
         Auto();
-        Auto(int modelo,string patente, string marca, float precio,lista<string>caracteristicas);
+        Auto(int modelo,string patente, string marca, float precio);
         virtual ~Auto();
-        int getmodelo(); //OBS
+
+        int getmodelo()const; //OBS
         void setmodelo(int mod);//MOD
-        string getmarca();// OBS
-        string getpatente();// OBS
+        string getmarca()const;// OBS
+        string getpatente()const;// OBS
         void setpatente(string pat);//MOD
-        float getprecio();// OBS
-        lista<string> getCaracteristicas();//OBS
+        float getprecio()const;// OBS
+        const lista<string> & getcaracteristicas()const;//OBS
+        void setcaracteristica(int posicion,string caracteristica);//MOD
+
         bool operator < (const Auto & A) const;
         bool operator > (const Auto & A) const;
         bool operator == (const Auto & A) const;
         bool operator != (const Auto & A) const;
-        void imprimirauto();
-        void imprimirauto2();
 
     private:
         int modelo;
@@ -32,4 +32,6 @@ class Auto
         lista<string>caracteristicas;
 };
 
+
+ostream & operator << (ostream & salida , const Auto & a);
 #endif // AUTO_H

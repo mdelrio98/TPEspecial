@@ -3,6 +3,7 @@
 #include "Concesionaria.h"
 #include "Auto.h"
 #include <cstddef>
+#include <cassert>
 using namespace std;
 
 template <typename T>
@@ -12,8 +13,18 @@ lista<T>::lista(){
 }
 template <typename T>
 lista<T>::~lista(){
-    //Tenemos que eliminar todos los punteros al heap con un while
-    //dtor
+    //vaciar();
+}
+
+template <typename T>
+void lista<T>::vaciar(){
+    Nodo * aux = primero;
+    while(primero != NULL){
+        aux = primero->sig;
+        delete primero;
+        primero = aux;
+    }
+    primero = NULL;
 }
 
 template <typename T>
@@ -35,7 +46,7 @@ void lista<T>::agregar_elemento(int posicion,const T & nuevo_elemento){
             if(cantidad_elementos()+1 >= posicion){
                 int contador=2;//empieza en 2 porque me hace ir un nodo atrasado y puedo insertar bien
                 Nodo * aux = primero;
-                while((aux->sig!=NULL)and(contador<posicion)){
+                while((aux->sig!=NULL) && (contador<posicion)){
                     aux=aux->sig;
                     contador++;
                 }
@@ -49,21 +60,32 @@ void lista<T>::agregar_elemento(int posicion,const T & nuevo_elemento){
 }
 
 template <typename T>
-const T lista<T>::recuperar_elemento(int iteraciones){
-    if(primero!= NULL){
-        int contador=1;//empieza en 2 porque me hace ir un nodo atrasado y puedo insertar bien
-                Nodo * aux = primero;
-                while((aux!=NULL)and(contador<iteraciones)){
-                    aux=aux->sig;
-                    contador++;
-                }
-                if(contador == iteraciones)
-                    return aux->elemento;
-    }
+void lista<T>::cursor_al_principio(){
+     cursor_interno = this->primero;
 }
 
 template <typename T>
-bool lista<T>::listavacia(){
+const T & lista<T>::recuperar_elemento()const{
+    return cursor_interno->elemento;
+}
+
+template <typename T>
+void lista<T>::avanzar_cursor(){
+    cursor_interno = cursor_interno->sig;
+}
+
+template <typename T>
+const T & lista<T>::recuperar_lista(int iteraciones)const{
+    assert(iteraciones < cantidad_elementos());
+    Nodo * cursor = this->primero;
+    for(int i =0;i < iteraciones;i++)
+        cursor = cursor->sig;
+
+    return cursor->elemento;
+}
+
+template <typename T>
+bool lista<T>::lista_vacia(){
     if (primero == NULL)
         return true;
     else
@@ -71,7 +93,7 @@ bool lista<T>::listavacia(){
 }
 
 template <typename T>
-int lista<T>::cantidad_elementos(){
+int lista<T>::cantidad_elementos()const{
     if(primero!=NULL){
         Nodo*aux = NULL;
         aux=primero;
@@ -129,5 +151,14 @@ void lista<T>::eliminar_lista(){
     }
 }
 
+template <typename T>
+void lista<T>::mostrar_elementos(){
+    Nodo * cursor = primero;
+    while(cursor != NULL){
+        cout << cursor->elemento << " " ;
+        cursor = cursor->sig;
+    }
+}
+
 template class lista<string>;
-template class lista<Auto*>;
+template class lista<Auto>;

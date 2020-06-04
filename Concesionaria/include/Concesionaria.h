@@ -1,6 +1,5 @@
 #ifndef CONCESIONARIA_H
 #define CONCESIONARIA_H
-#include "arbol.h"
 #include "lista.h"
 #include "auto.h"
 using namespace std;
@@ -10,16 +9,15 @@ class Concesionaria
     public:
         Concesionaria();//CB
         virtual ~Concesionaria();
-        void  nuevoAuto(Auto a);
-        bool existePatente(string patente);//OBS
-        void listarModelo(int modelo, lista<Auto*>&listaPorModelo);//OBS
+        void nuevo_auto(Auto a);//MOD
+        bool existe_patente(string patente);//OBS
+        void listar_modelo(int modelo, lista<Auto*>&listaPorModelo);//OBS
         // en la implementacion utilizamos un void pero en la especificacion de nereus devolvemos una lista
-        Auto mayorPrecio(arbol &arbol_autos);//OBS
-        void procesar_archivo_entrada(string origen);//, Contenedor & contenedor);
-        void imprimirarbolautos();
-        void imprimirlista(lista<Auto*>listaPorModelo);
+        //Auto mayor_precio();//OBS
+        void procesar_archivo_entrada(string origen);
+        void  mostrar_lista();
     private:
-        arbol arbol_Autos;
+        lista<Auto>autos;
 };
 
 #endif // CONCESIONARIA_H

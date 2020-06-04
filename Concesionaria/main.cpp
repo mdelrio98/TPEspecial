@@ -16,23 +16,16 @@ int main()
 {
 
     Concesionaria c;
-    c.procesar_archivo_entrada("autos.csv");
-    //existe patente
- //   c.imprimirarbolautos();
- //   cout<<"Hola"<<endl;
-    string s= "QVP111";
-    if(c.existePatente(s)== true){
+    c.procesar_archivo_entrada("prueba.csv");
+    string s= "MLM111";
+    if(c.existe_patente(s)== true){
         cout<<"Se encuentra la patente"<<endl;
     }
     else
         cout<<"No se encuentra la patente"<<endl;
-    //Listar modelo
-    lista<Auto*>listaPorModelo;
-    c.listarModelo(2011,listaPorModelo);
-//    c.imprimirlista(listaPorModelo);
-    //Mayor precio
-//    Auto a0;
-//    a0 = c.mayorPrecio(arbol_Autos);
-//    delete c;
+    c.mostrar_lista();
+   // lista<Auto*>listaPorModelo;
+   // c.listarModelo(2011,listaPorModelo);
+
     return 0;
 }

@@ -14,7 +14,7 @@ arbol::~arbol(){
     //dtor
 }
 
-
+/*
 void arbol::imprimirarbol(){
     if(Arbol!=NULL){
         Arbol->izq->imprimirarbol();
@@ -22,7 +22,7 @@ void arbol::imprimirarbol(){
         Arbol->der->imprimirarbol();
     }
 }
-
+*/
 
 bool arbol::arbolVacio(){
     if(Arbol == NULL){

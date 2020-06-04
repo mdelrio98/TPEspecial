@@ -3,6 +3,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cstddef>
+#include <string>
 using namespace std;
 
 Concesionaria::Concesionaria(){
@@ -13,35 +14,47 @@ Concesionaria::~Concesionaria(){
     //dtor
 }
 
-void  Concesionaria::imprimirarbolautos(){
-    arbol_Autos.imprimirarbol();
+void  Concesionaria::mostrar_lista(){
+    autos.mostrar_elementos();
 }
-/*
-void Concesionaria::imprimirlista(lista<Auto*>listaPorModelo){
 
-    if(listaPorModelo!= NULL){
-        cout<<"Tiene: "<<endl;
-        int longlista= listaPorModelo.cantidad_elementos();
-        for (int i=1;i < longlista;i++){
-            cout<<"Patente"<< listaPorModelo.recuperar_elemento(i)->getpatente()<<endl;
-            cout<<"Modelo"<< listaPorModelo.recuperar_elemento(i)->getmodelo()<<endl;
-            cout<<"Marca"<< listaPorModelo.recuperar_elemento(i)->getmarca()<<endl;
-            cout<<"Precio"<< listaPorModelo.recuperar_elemento(i)->getprecio()<<endl;
-            lista<string> cara = listaPorModelo.recuperar_elemento(i)->getCaracteristicas();
-            int j=0;
-            while (cara != NULL){
-                cout<<cara.recuperar_elemento(j)<<endl;
-                cara= cara->sig;
-                j++;
-            }
+void  Concesionaria::nuevo_auto(Auto a){
+    bool inserto = false;
+    autos.cursor_al_principio();
+    int longlista = autos.cantidad_elementos();
+    cout<<"cargo:"<<a.getpatente()<<"/"<<longlista<<"/"<<endl;
+    if(longlista == 0)
+        autos.agregar_elemento(1,a);
+    int i = 0;
+    while(( i < longlista ) && (inserto == false)){
+        Auto aux = autos.recuperar_lista(i);
+        cout<<"pos"<<i<<endl;
+        if((aux.getpatente().compare(a.getpatente())) > 0 ){
+           cout<<"entre:"<<a.getpatente()<<endl;
+           autos.agregar_elemento(i,a);
+           inserto = true;
         }
+        autos.avanzar_cursor();
+        i++;
     }
-}*/
-
-void  Concesionaria::nuevoAuto(Auto a){
-    arbol_Autos.agregar(a);
 }
 
+bool Concesionaria::existe_patente(string patente){
+    bool found = false;
+    autos.cursor_al_principio();
+    int longlista = autos.cantidad_elementos();
+    int i = 0;
+    while(( i < longlista ) && (found == false)){
+        Auto a = autos.recuperar_lista(i);
+        if(a.getpatente() == patente)
+            found = true;
+        autos.avanzar_cursor();
+        i++;
+    }
+    return found;
+}
+
+/*
 void Concesionaria::listarModelo(int modelo, lista<Auto*>&listaPorModelo){
     if(arbol_Autos.arbolVacio()!= true){
         int longlista= arbol_Autos.cantidad_Elementos();
@@ -56,21 +69,7 @@ void Concesionaria::listarModelo(int modelo, lista<Auto*>&listaPorModelo){
             }
         }
     }
-}
-
-bool Concesionaria::existePatente(string patente){
-    if(arbol_Autos.arbolVacio()!= true){
-        Auto a1;
-        a1.setpatente(patente);
-        //cout<<"patente:"<<a1.getpatente()<<endl;
-        if(arbol_Autos.existe_elemento(a1) == true){
-           // cout<<"si";
-            return true;
-        }
-    }
-    return false;
-}
-
+}*/
 
 //Comentarios: atoi y atof requieren un char * para converter a número, usamos c_str de la clase string.
 void Concesionaria::procesar_archivo_entrada(string origen)
@@ -111,8 +110,9 @@ void Concesionaria::procesar_archivo_entrada(string origen)
             cout << modelo << "-"<<marca<<"-"<<patente<<"-"<<precio<<endl;
             //TO DO: Informacion general del auto.
 
-            lista<string>carac;
+            Auto  a1(modelo,patente,marca,precio);
             int contador=1;
+
             //Desde esta posición hasta el final se encuentra un número variable de caracteristicas.
             string caracteristicas = linea.substr(pos_final + 1, linea.size());
             int pos_inicial_guion = 0, pos_final_guion = 0;
@@ -120,13 +120,12 @@ void Concesionaria::procesar_archivo_entrada(string origen)
                 pos_final_guion = caracteristicas.find('-', pos_inicial_guion);
                 string caracteristica = caracteristicas.substr(pos_inicial_guion, pos_final_guion - pos_inicial_guion);
                 pos_inicial_guion = pos_final_guion + 1;
-                carac.agregar_elemento(contador,caracteristica);
+                a1.setcaracteristica(contador,caracteristica);
                 contador++;
                 //TO DO: Nueva caracteristica encontrada.
             }
-            Auto  a1(modelo,patente,marca,precio,carac);
-            nuevoAuto(a1);
-//            delete a1;
+            nuevo_auto(a1);
+           //delete a1;
         }
     }
 }
