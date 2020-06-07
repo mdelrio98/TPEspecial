@@ -78,7 +78,7 @@ template <typename T>
 const T & lista<T>::recuperar_lista(int iteraciones)const{
     assert(iteraciones < cantidad_elementos());
     Nodo * cursor = this->primero;
-    for(int i =0;i < iteraciones;i++)
+    for(int i =1;i < iteraciones;i++)
         cursor = cursor->sig;
 
     return cursor->elemento;
@@ -97,7 +97,7 @@ int lista<T>::cantidad_elementos()const{
     if(primero!=NULL){
         Nodo*aux = NULL;
         aux=primero;
-        int contador=0;
+        int contador=1;
         while(aux!=NULL){
             contador++;
             aux=aux->sig;

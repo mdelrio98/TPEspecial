@@ -22,21 +22,19 @@ void  Concesionaria::nuevo_auto(Auto a){
     bool inserto = false;
     autos.cursor_al_principio();
     int longlista = autos.cantidad_elementos();
-    cout<<"cargo:"<<a.getpatente()<<"/"<<longlista<<"/"<<endl;
     if(longlista == 0)
         autos.agregar_elemento(1,a);
-    int i = 0;
-    while(( i < longlista ) && (inserto == false)){
+    int i = 1;
+    while(( i < longlista+1 ) && (inserto == false)){
         Auto aux = autos.recuperar_lista(i);
-        cout<<"pos"<<i<<endl;
-        if((aux.getpatente().compare(a.getpatente())) > 0 ){
-           cout<<"entre:"<<a.getpatente()<<endl;
+        if(aux.getpatente() > a.getpatente()){
            autos.agregar_elemento(i,a);
            inserto = true;
         }
         autos.avanzar_cursor();
         i++;
     }
+    autos.cursor_al_principio();
 }
 
 bool Concesionaria::existe_patente(string patente){
