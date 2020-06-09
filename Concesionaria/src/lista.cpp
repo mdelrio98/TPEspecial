@@ -13,7 +13,7 @@ lista<T>::lista(){
 }
 template <typename T>
 lista<T>::~lista(){
-    //vaciar();
+    vaciar();
 }
 
 template <typename T>
@@ -160,5 +160,8 @@ void lista<T>::mostrar_elementos(){
     }
 }
 
+
+
 template class lista<string>;
 template class lista<Auto>;
+template class lista<Auto*>;

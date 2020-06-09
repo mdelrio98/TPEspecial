@@ -22,6 +22,7 @@ class lista
         void avanzar_cursor();//MOD
         const T & recuperar_lista(int iteraciones)const;//OBS
         void mostrar_elementos();
+        void mostrar_elemento(const T *  elem);
     private:
         struct Nodo{
             T elemento;

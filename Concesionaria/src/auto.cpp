@@ -56,7 +56,6 @@ void Auto::setcaracteristica(int posicion,string caracteristica){
 
 ostream & operator << (ostream & salida , const Auto & a){
     salida << "---------------------------------" <<endl;
-    salida << "Auto:" <<endl;
     salida << "[(Patente:" << a.getpatente()<<")"<<endl;
     salida << "(Marca:" << a.getmarca()<<")"<<endl;
     salida << "(Modelo:" << a.getmodelo()<<")"<<endl;
@@ -68,7 +67,6 @@ ostream & operator << (ostream & salida , const Auto & a){
     salida << ")]" << endl ;
     return salida;
 }
-
 
 bool Auto::operator < (const Auto & A) const {
     if ((this->patente < A.patente) || (this->modelo < A.modelo)){

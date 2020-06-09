@@ -12,7 +12,10 @@ Concesionaria::Concesionaria(){
 
 Concesionaria::~Concesionaria(){
     //dtor
+    delete mas_caro;
+    autos.eliminar_lista();
 }
+
 
 void  Concesionaria::mostrar_lista(){
     autos.mostrar_elementos();
@@ -22,13 +25,17 @@ void  Concesionaria::nuevo_auto(Auto a){
     bool inserto = false;
     autos.cursor_al_principio();
     int longlista = autos.cantidad_elementos();
-    if(longlista == 0)
+    if(longlista == 0){
         autos.agregar_elemento(1,a);
+        mas_caro = new Auto(a);
+    }
     int i = 1;
     while(( i < longlista+1 ) && (inserto == false)){
         Auto aux = autos.recuperar_lista(i);
         if(aux.getpatente() > a.getpatente()){
            autos.agregar_elemento(i,a);
+           if(a.getprecio() > mas_caro->getprecio())
+            mas_caro = new Auto(a);
            inserto = true;
         }
         autos.avanzar_cursor();
@@ -52,22 +59,40 @@ bool Concesionaria::existe_patente(string patente){
     return found;
 }
 
-/*
-void Concesionaria::listarModelo(int modelo, lista<Auto*>&listaPorModelo){
-    if(arbol_Autos.arbolVacio()!= true){
-        int longlista= arbol_Autos.cantidad_Elementos();
-        lista<Auto*>listaaux;
-        for(int i = 1; i < longlista;i++){
-            arbol_Autos.listarElementos(i,listaaux);
-             Auto * a=listaaux.recuperar_elemento(i);
-             //cout<<"crea";
-            if( a->getmodelo()== modelo){
-                listaPorModelo.agregar_elemento(i,a);
-               // cout<<"auto:"<<a->getpatente()<<endl;
-            }
-        }
+void Concesionaria::mayor_precio(){
+    cout << "************************************" <<endl;
+    cout << "El auto mas caro es: "<<endl;
+    cout << "Auto:" <<endl;
+    cout << "[(Patente:" << mas_caro->getpatente()<<")"<<endl;
+    cout << "(Marca:" << mas_caro->getmarca()<<")"<<endl;
+    cout << "(Modelo:" << mas_caro->getmodelo()<<")"<<endl;
+    cout << "(Precio:" << mas_caro->getprecio()<<")"<<endl;
+    cout << "(Caracteristicas:";
+    for(int i=0; i < mas_caro->getcaracteristicas().cantidad_elementos() ;i++){
+        cout <<  mas_caro->getcaracteristicas().recuperar_lista(i) << ",";
     }
-}*/
+    cout << ")]" << endl ;
+}
+
+
+void Concesionaria::listar_modelo(int modelo, lista<Auto*>&listaPorModelo){
+    if(autos.lista_vacia()!= true){
+        int longlista= autos.cantidad_elementos();
+        autos.cursor_al_principio();
+        int j=1;
+        for(int i = 1; i < longlista;i++){
+            Auto  a= autos.recuperar_lista(i);
+            Auto * nuevo = new Auto(a);
+            if( a.getmodelo()== modelo){
+                listaPorModelo.agregar_elemento(j,nuevo);
+                j++;
+            }
+            autos.avanzar_cursor();
+            delete nuevo;
+        }
+    }else
+        cout<<"No hay autos";
+}
 
 //Comentarios: atoi y atof requieren un char * para converter a número, usamos c_str de la clase string.
 void Concesionaria::procesar_archivo_entrada(string origen)
