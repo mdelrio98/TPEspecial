@@ -25,7 +25,7 @@ int main()
         cout<<"No se encuentra la patente"<<endl;
     c.mostrar_lista();
     lista<Auto*>listaPorModelo;
-    c.listar_modelo(2019,listaPorModelo);
+    c.listar_modelo(2015,listaPorModelo);
     c.mayor_precio();
     return 0;
 }

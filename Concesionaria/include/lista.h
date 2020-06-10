@@ -10,7 +10,7 @@ class lista
         void vaciar();
         void agregar_elemento(int posicion,const T & nuevo_elemento);//MOD
         void agregar_principio(const T & elemento);//MOD
-        int cantidad_elementos()const;//OBS
+        int get_cantelementos()const;//OBS
         bool existe_elemento()const;//OBS
         void eliminar_Primero();//MOD
         void eliminar_Arbitrario(T elemento);//MOD
@@ -30,6 +30,7 @@ class lista
         };
         Nodo * primero;
         Nodo * cursor_interno;
+        int cantidad_elementos;
 };
 
 #endif // LISTA_H

@@ -61,7 +61,7 @@ ostream & operator << (ostream & salida , const Auto & a){
     salida << "(Modelo:" << a.getmodelo()<<")"<<endl;
     salida << "(Precio:" << a.getprecio()<<")"<<endl;
     salida << "(Caracteristicas:";
-    for(int i=0; i < a.getcaracteristicas().cantidad_elementos() ;i++){
+    for(int i=0; i < a.getcaracteristicas().get_cantelementos() ;i++){
         salida <<  a.getcaracteristicas().recuperar_lista(i) << ",";
     }
     salida << ")]" << endl ;

@@ -19,7 +19,7 @@ class Concesionaria
         void  mostrar_lista_modelos(lista<Auto*>&listaPorModelo);
     private:
         lista<Auto>autos;
-        Auto * mas_caro=NULL;
+        Auto * mas_caro;
 };
 
 #endif // CONCESIONARIA_H

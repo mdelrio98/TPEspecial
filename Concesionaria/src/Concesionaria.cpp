@@ -12,8 +12,8 @@ Concesionaria::Concesionaria(){
 
 Concesionaria::~Concesionaria(){
     //dtor
-    delete mas_caro;
-    autos.eliminar_lista();
+    //delete mas_caro;
+    //autos.eliminar_lista();
 }
 
 
@@ -24,22 +24,30 @@ void  Concesionaria::mostrar_lista(){
 void  Concesionaria::nuevo_auto(Auto a){
     bool inserto = false;
     autos.cursor_al_principio();
-    int longlista = autos.cantidad_elementos();
+    int longlista = autos.get_cantelementos();
     if(longlista == 0){
+            cout<<"longlista=0"<<endl;
         autos.agregar_elemento(1,a);
         mas_caro = new Auto(a);
     }
-    int i = 1;
-    while(( i < longlista+1 ) && (inserto == false)){
-        Auto aux = autos.recuperar_lista(i);
-        if(aux.getpatente() > a.getpatente()){
-           autos.agregar_elemento(i,a);
-           if(a.getprecio() > mas_caro->getprecio())
-            mas_caro = new Auto(a);
-           inserto = true;
+    if(longlista > 0){
+        cout<<"longlista ="<<longlista<<" > 0"<<endl;
+        int i = 1;
+        while(( i <= longlista ) && (inserto == false)){
+            Auto aux = autos.recuperar_lista(i);
+            cout<<"while"<<endl;
+            if(aux.getpatente() > a.getpatente()){//aux = OSD101 < a=YVC011
+               autos.agregar_elemento(i,a);
+                cout<<"cargo "<<a.getpatente()<<"en pos"<<i<<endl;
+               if(a.getprecio() > mas_caro->getprecio())
+                    mas_caro = new Auto(a);
+               inserto = true;
+            }
+            else{
+                autos.avanzar_cursor();
+                i++;
+            }
         }
-        autos.avanzar_cursor();
-        i++;
     }
     autos.cursor_al_principio();
 }
@@ -47,7 +55,7 @@ void  Concesionaria::nuevo_auto(Auto a){
 bool Concesionaria::existe_patente(string patente){
     bool found = false;
     autos.cursor_al_principio();
-    int longlista = autos.cantidad_elementos();
+    int longlista = autos.get_cantelementos();
     int i = 0;
     while(( i < longlista ) && (found == false)){
         Auto a = autos.recuperar_lista(i);
@@ -68,7 +76,7 @@ void Concesionaria::mayor_precio(){
     cout << "(Modelo:" << mas_caro->getmodelo()<<")"<<endl;
     cout << "(Precio:" << mas_caro->getprecio()<<")"<<endl;
     cout << "(Caracteristicas:";
-    for(int i=0; i < mas_caro->getcaracteristicas().cantidad_elementos() ;i++){
+    for(int i=0; i < mas_caro->getcaracteristicas().get_cantelementos() ;i++){
         cout <<  mas_caro->getcaracteristicas().recuperar_lista(i) << ",";
     }
     cout << ")]" << endl ;
@@ -77,14 +85,15 @@ void Concesionaria::mayor_precio(){
 
 void Concesionaria::listar_modelo(int modelo, lista<Auto*>&listaPorModelo){
     if(autos.lista_vacia()!= true){
-        int longlista= autos.cantidad_elementos();
+        int longlista= autos.get_cantelementos();
         autos.cursor_al_principio();
         int j=1;
-        for(int i = 1; i < longlista;i++){
+        for(int i = 1; i <= longlista;i++){
             Auto  a= autos.recuperar_lista(i);
             Auto * nuevo = new Auto(a);
             if( a.getmodelo()== modelo){
                 listaPorModelo.agregar_elemento(j,nuevo);
+                cout<<"auto por modelo"<<a.getmarca()<<"//"<<a.getpatente()<<endl;
                 j++;
             }
             autos.avanzar_cursor();
@@ -148,7 +157,6 @@ void Concesionaria::procesar_archivo_entrada(string origen)
                 //TO DO: Nueva caracteristica encontrada.
             }
             nuevo_auto(a1);
-           //delete a1;
         }
     }
 }
