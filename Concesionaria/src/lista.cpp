@@ -3,7 +3,7 @@
 #include "Concesionaria.h"
 #include "Auto.h"
 #include <cstddef>
-#include <cassert>
+#include<assert.h>
 using namespace std;
 
 template <typename T>
@@ -28,7 +28,7 @@ void lista<T>::agregar_principio(const T & elemento){
     nuevo->elemento=elemento;
     nuevo->sig=primero;
     primero= nuevo;
-    this->cantidad_elementos++;
+    this->cantidad_elementos=cantidad_elementos+1;
 }
 
 template <typename T>
@@ -39,7 +39,7 @@ void lista<T>::agregar_elemento(int posicion,const T & nuevo_elemento){
     //la lista tiene elementos
     else{
         if(primero != NULL){
-            if(this->cantidad_elementos >= posicion){
+            if(this->cantidad_elementos+1 >= posicion){
                 int contador=2;//empieza en 2 porque me hace ir un nodo atrasado y puedo insertar bien
                 Nodo * aux = primero;
                 while((aux->sig!=NULL) && (contador<posicion)){
@@ -50,7 +50,7 @@ void lista<T>::agregar_elemento(int posicion,const T & nuevo_elemento){
                 aux2->elemento=nuevo_elemento;
                 aux2->sig=aux->sig;
                 aux->sig=aux2;
-                this->cantidad_elementos++;
+                this->cantidad_elementos=cantidad_elementos+1;
             }
         }
     }
@@ -73,10 +73,11 @@ void lista<T>::avanzar_cursor(){
 
 template <typename T>
 const T & lista<T>::recuperar_lista(int iteraciones)const{
-    //assert(iteraciones < cantidad_elementos);
+    assert(iteraciones <= this->cantidad_elementos);
     Nodo * cursor = this->primero;
-    for(int i =1; i <= iteraciones ;i++)
+    for(int i =0; i < iteraciones ;i++){
         cursor = cursor->sig;
+    }
 
     return cursor->elemento;
 }
@@ -94,7 +95,7 @@ void lista<T>::eliminar_Primero(){
     Nodo * Aeliminar = primero;
     primero = primero->sig;
     delete Aeliminar;
-    this->cantidad_elementos++;
+    this->cantidad_elementos=cantidad_elementos+1;
 }
 
 template <typename T>
@@ -108,7 +109,7 @@ void lista<T>::eliminar_Arbitrario(T elemento){
             cursor->sig=cursor->sig->sig;
             AEliminar->sig = NULL;
             delete AEliminar;
-            this->cantidad_elementos--;
+            this->cantidad_elementos=cantidad_elementos-1;
         }
     }
 }
@@ -130,7 +131,7 @@ void lista<T>::eliminar_lista(){
             cursor = primero;
             primero = primero->sig;
             delete cursor;
-            this->cantidad_elementos--;
+            this->cantidad_elementos=cantidad_elementos-1;
         }
     }
 }

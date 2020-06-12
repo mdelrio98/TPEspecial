@@ -7,6 +7,8 @@
 using namespace std;
 
 Concesionaria::Concesionaria(){
+
+    this->mas_caro=NULL;
     //ctor
 }
 
@@ -26,30 +28,25 @@ void  Concesionaria::nuevo_auto(Auto a){
     autos.cursor_al_principio();
     int longlista = autos.get_cantelementos();
     if(longlista == 0){
-            cout<<"longlista=0"<<endl;
         autos.agregar_elemento(1,a);
         mas_caro = new Auto(a);
     }
     if(longlista > 0){
-        cout<<"longlista ="<<longlista<<" > 0"<<endl;
-        int i = 1;
-        while(( i <= longlista ) && (inserto == false)){
+        int i = 0;
+        while(( i < longlista ) && (inserto == false)){
+            //cout<<"cant"<<autos.get_cantelementos()<<"i"<<i<<endl;
             Auto aux = autos.recuperar_lista(i);
-            cout<<"while"<<endl;
-            if(aux.getpatente() > a.getpatente()){//aux = OSD101 < a=YVC011
-               autos.agregar_elemento(i,a);
-                cout<<"cargo "<<a.getpatente()<<"en pos"<<i<<endl;
-               if(a.getprecio() > mas_caro->getprecio())
+            //cout<<aux.getpatente()<<endl;
+            autos.agregar_elemento(i,a);
+            //cout<<"cargo "<<a.getpatente()<<"en pos"<<i<<endl;
+            if(a.getprecio() > mas_caro->getprecio()){
                     mas_caro = new Auto(a);
-               inserto = true;
             }
-            else{
-                autos.avanzar_cursor();
-                i++;
-            }
+            inserto = true;
+            autos.avanzar_cursor();
+            i++;
         }
     }
-    autos.cursor_al_principio();
 }
 
 bool Concesionaria::existe_patente(string patente){
@@ -68,7 +65,7 @@ bool Concesionaria::existe_patente(string patente){
 }
 
 void Concesionaria::mayor_precio(){
-    cout << "************************************" <<endl;
+    cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" <<endl;
     cout << "El auto mas caro es: "<<endl;
     cout << "Auto:" <<endl;
     cout << "[(Patente:" << mas_caro->getpatente()<<")"<<endl;
@@ -88,16 +85,18 @@ void Concesionaria::listar_modelo(int modelo, lista<Auto*>&listaPorModelo){
         int longlista= autos.get_cantelementos();
         autos.cursor_al_principio();
         int j=1;
-        for(int i = 1; i <= longlista;i++){
+        cout<<"*************************************"<<endl;
+        cout<<"Auto con modelo "<<modelo<<": "<<endl;
+        for(int i = 1; i < longlista;i++){
             Auto  a= autos.recuperar_lista(i);
             Auto * nuevo = new Auto(a);
             if( a.getmodelo()== modelo){
                 listaPorModelo.agregar_elemento(j,nuevo);
-                cout<<"auto por modelo"<<a.getmarca()<<"//"<<a.getpatente()<<endl;
+                cout<<"["<<"modelo:"<<a.getmodelo()<<" "<<a.getmarca()<<" // "<<a.getpatente()<<"]"<<endl;
                 j++;
             }
             autos.avanzar_cursor();
-            delete nuevo;
+            //delete nuevo;
         }
     }else
         cout<<"No hay autos";
